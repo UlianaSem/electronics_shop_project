@@ -34,3 +34,11 @@ def test_string_to_number():
     assert src.item.Item.string_to_number('5') == 5
     assert src.item.Item.string_to_number('5.0') == 5
     assert src.item.Item.string_to_number('5.5') == 5
+
+
+def test_repr(get_item_for_test):
+    assert repr(get_item_for_test) == 'Item(\'Book\', 200.0, 173)'
+
+
+def test_str(get_item_for_test):
+    assert str(get_item_for_test) == 'Book'

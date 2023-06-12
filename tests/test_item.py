@@ -1,5 +1,6 @@
 import pytest
 import src.item
+import src.phone
 
 
 @pytest.fixture
@@ -42,3 +43,12 @@ def test_repr(get_item_for_test):
 
 def test_str(get_item_for_test):
     assert str(get_item_for_test) == 'Book'
+
+
+def test_add(get_item_for_test):
+    item1 = src.item.Item("Смартфон", 10000, 20)
+    phone1 = src.phone.Phone("iPhone 14", 120_000, 5, 2)
+
+    assert item1 + phone1 == 25
+    assert phone1 + phone1 == 10
+    assert phone1 + item1 == 25

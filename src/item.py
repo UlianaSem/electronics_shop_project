@@ -28,6 +28,12 @@ class Item:
     def __str__(self):
         return self.__name
 
+    def __add__(self, other):
+        if issubclass(other.__class__, self.__class__) or isinstance(self, self.__class__):
+            return self.quantity + other.quantity
+        else:
+            raise TypeError('Объекты должны принадлежать классам Item и Phone')
+
     @property
     def name(self):
         return self.__name

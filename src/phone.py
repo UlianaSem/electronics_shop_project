@@ -2,7 +2,18 @@ import src.item
 
 
 class Phone(src.item.Item):
+    """
+    Класс для представления смартфона в магазине.
+    """
     def __init__(self, name: str, price: float, quantity: int, number_of_sim: int) -> None:
+        """
+        Создание экземпляра класса Phone.
+
+        :param name: Название товара.
+        :param price: Цена за единицу товара.
+        :param quantity: Количество товара в магазине.
+        :param number_of_sim: Количество сим-карт в смартфоне.
+        """
         super().__init__(name, price, quantity)
         self.__number_of_sim = number_of_sim
 

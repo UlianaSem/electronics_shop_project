@@ -1,5 +1,7 @@
 import csv
 
+import src.instantiate_csv_error
+
 
 class Item:
     """
@@ -66,6 +68,9 @@ class Item:
         try:
             with open('../src/items.csv', 'r', encoding='Windows-1251') as csv_file:
                 reader = csv.DictReader(csv_file)
+
+                if reader.fieldnames != ['name', 'price', 'quantity']:
+                    raise src.instantiate_csv_error.InstantiateCSVError
 
                 for line in reader:
                     cls(line['name'], float(line['price']), int(line['quantity']))

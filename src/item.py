@@ -63,11 +63,15 @@ class Item:
         """Метод,инициализирующий экземпляры класса Item данными из файла src/items.csv"""
         cls.all.clear()
 
-        with open('../src/items.csv', 'r', encoding='Windows-1251') as csv_file:
-            reader = csv.DictReader(csv_file)
+        try:
+            with open('../src/items.csv', 'r', encoding='Windows-1251') as csv_file:
+                reader = csv.DictReader(csv_file)
 
-            for line in reader:
-                cls(line['name'], float(line['price']), int(line['quantity']))
+                for line in reader:
+                    cls(line['name'], float(line['price']), int(line['quantity']))
+
+        except FileNotFoundError:
+            raise FileNotFoundError('Отсутствует файл item.csv')
 
     @staticmethod
     def string_to_number(string):

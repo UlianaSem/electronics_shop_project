@@ -61,12 +61,12 @@ class Item:
         self.price = self.price * self.pay_rate
 
     @classmethod
-    def instantiate_from_csv(cls):
+    def instantiate_from_csv(cls, path='../src/items.csv'):
         """Метод,инициализирующий экземпляры класса Item данными из файла src/items.csv"""
         cls.all.clear()
 
         try:
-            with open('../src/items.csv', 'r', encoding='Windows-1251') as csv_file:
+            with open(path, 'r', encoding='Windows-1251') as csv_file:
                 reader = csv.DictReader(csv_file)
 
                 if reader.fieldnames != ['name', 'price', 'quantity']:

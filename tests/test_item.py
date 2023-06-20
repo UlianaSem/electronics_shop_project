@@ -29,6 +29,12 @@ def test_instantiate_from_csv():
     assert item1.price == 100
     assert item1.quantity == 1
 
+    with pytest.raises(FileNotFoundError):
+        src.item.Item.instantiate_from_csv('../tests/items.csv')
+
+    with pytest.raises(src.instantiate_csv_error.InstantiateCSVError):
+        src.item.Item.instantiate_from_csv('../tests/test_items.csv')
+
 
 def test_string_to_number():
     assert src.item.Item.string_to_number('5') == 5
